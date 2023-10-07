@@ -41,11 +41,12 @@ pub fn solve() !void {
 
     var buf: [1024]u8 = undefined;
 
-    var position_counter = PositionCounter.init();
-    try position_counter.addPosition(@Vector(2, i32){ 0, 0 });
+    var tail_positions = PositionCounter.init();
+    try tail_positions.addPosition(@Vector(2, i32){ 0, 0 });
 
     var head: @Vector(2, i32) = .{ 0, 0 };
-    var tail: @Vector(2, i32) = .{ 0, 0 };
+    var knots = ArrayList(@Vector(2, i32)).init(allocator);
+    try knots.appendNTimes(@Vector(2, i32){ 0, 0 }, 9);
 
     while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         var values = std.mem.split(u8, line, " ");
@@ -71,41 +72,51 @@ pub fn solve() !void {
             };
             head += head_movement;
 
-            const offset: @Vector(2, i32) = head - tail;
+            var prev_knot = head;
 
-            const is_touching = try std.math.absInt(offset[0]) <= 1 and try std.math.absInt(offset[1]) <= 1;
-            if (is_touching) { // tail is within the 9 tiles around the head
-                continue;
+            for (0..knots.items.len) |j| {
+                const offset: @Vector(2, i32) = prev_knot - knots.items[j];
+                knots.items[j] += try getMovementForOffset(offset);
+                prev_knot = knots.items[j];
             }
 
-            if (offset[0] == 0) { // head and tail are in a vertical line
-                if (offset[1] > 1) {
-                    tail += @Vector(2, i32){ 0, 1 };
-                } else if (offset[1] < -1) {
-                    tail += @Vector(2, i32){ 0, -1 };
-                }
-            } else if (offset[1] == 0) { // head and tail are in a horizontal line
-                if (offset[0] > 1) {
-                    tail += @Vector(2, i32){ 1, 0 };
-                } else if (offset[0] < -1) {
-                    tail += @Vector(2, i32){ -1, 0 };
-                }
-            } else if (offset[0] > 0 and offset[1] > 0) { // head in top right quadrant from tail
-                tail += @Vector(2, i32){ 1, 1 };
-            } else if (offset[0] > 0 and offset[1] < 0) { // head in bottom right quadrant from tail
-                tail += @Vector(2, i32){ 1, -1 };
-            } else if (offset[0] < 0 and offset[1] < 0) { // head in bottom left quadrant from tail
-                tail += @Vector(2, i32){ -1, -1 };
-            } else if (offset[0] < 0 and offset[1] > 0) { // head in top left quadrant from tail
-                tail += @Vector(2, i32){ -1, 1 };
-            }
+            try tail_positions.addPosition(knots.getLast());
 
-            try position_counter.addPosition(tail);
-
-            // std.debug.print("{d} {d} --- {d} {d} --- {d} {d}\n", .{ head[0], head[1], offset[0], offset[1], tail[0], tail[1] });
+            // std.debug.print("{d} {d} --- {any}\n", .{ head[0], head[1], knots.items });
         }
     }
 
-    try stdout.print("{any} | {any} | {d}\n", .{ head, tail, position_counter.count });
+    try stdout.print("{any} | {any} | {d}\n", .{ head, knots.getLast(), tail_positions.count });
     try bw.flush();
+}
+
+fn getMovementForOffset(offset: @Vector(2, i32)) !@Vector(2, i32) {
+    const is_touching = try std.math.absInt(offset[0]) <= 1 and try std.math.absInt(offset[1]) <= 1;
+    if (is_touching) { // tail is within the 9 tiles around the head
+        return @Vector(2, i32){ 0, 0 };
+    }
+
+    if (offset[0] == 0) { // head and tail are in a vertical line
+        if (offset[1] > 1) {
+            return @Vector(2, i32){ 0, 1 };
+        } else if (offset[1] < -1) {
+            return @Vector(2, i32){ 0, -1 };
+        }
+    } else if (offset[1] == 0) { // head and tail are in a horizontal line
+        if (offset[0] > 1) {
+            return @Vector(2, i32){ 1, 0 };
+        } else if (offset[0] < -1) {
+            return @Vector(2, i32){ -1, 0 };
+        }
+    } else if (offset[0] > 0 and offset[1] > 0) { // head in top right quadrant from tail
+        return @Vector(2, i32){ 1, 1 };
+    } else if (offset[0] > 0 and offset[1] < 0) { // head in bottom right quadrant from tail
+        return @Vector(2, i32){ 1, -1 };
+    } else if (offset[0] < 0 and offset[1] < 0) { // head in bottom left quadrant from tail
+        return @Vector(2, i32){ -1, -1 };
+    } else if (offset[0] < 0 and offset[1] > 0) { // head in top left quadrant from tail
+        return @Vector(2, i32){ -1, 1 };
+    }
+
+    unreachable;
 }
