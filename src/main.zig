@@ -1,4 +1,4 @@
-const solution = @import("solutions/7-2.zig");
+const solution = @import("solutions/8-2.zig");
 
 pub fn main() !void {
     try solution.solve();
