@@ -2,16 +2,6 @@ const std = @import("std");
 const ArrayList = std.ArrayList;
 const allocator = std.heap.page_allocator;
 
-const Direction = enum { north, south, east, west };
-
-pub const PathNode = struct {
-    coordinates: @Vector(2, u32),
-    direction: ?Direction,
-    fn init(coordinates: @Vector(2, u32), direction: ?Direction) PathNode {
-        return PathNode{ .coordinates = coordinates, .direction = direction };
-    }
-};
-
 pub fn solve() !void {
     var file = try std.fs.cwd().openFile("inputs/12.txt", .{});
     defer file.close();
@@ -44,17 +34,16 @@ pub fn solve() !void {
         line_count += 1;
     }
 
-    // const start_node = PathNode.init(start, null);
     var distance_grid = try makeDistanceGrid(@intCast(map.items[0].len), @intCast(map.items.len), start);
     const shortest_path = try travel(map, distance_grid, start, destination);
 
-    const mock_path = ArrayList(PathNode).init(allocator);
-    try printPath(map, mock_path);
+    try printPath(map);
+
+    std.debug.print("\n", .{});
 
     try printDistanceGrid(distance_grid);
 
-    std.debug.print("start: {any}  end: {any}\n", .{ start, destination });
-    std.debug.print("shortest path: {d}\n", .{shortest_path});
+    std.debug.print("\nshortest path: {d}\n", .{shortest_path});
 }
 
 fn travel(map: ArrayList([]const u8), distance_grid: ArrayList(ArrayList(u32)), start: @Vector(2, u32), destination: @Vector(2, u32)) !u32 {
@@ -77,45 +66,7 @@ fn travel(map: ArrayList([]const u8), distance_grid: ArrayList(ArrayList(u32)), 
     }
 
     return 0;
-
-    // // will need an algorithm to follow the -1, -1, -1, etc. path in the distance grid to trace a shortest path (may be more than one of same length)
-    // var shortest_path = ArrayList(PathNode).init(allocator);
-    // // try shortest_path.append(current_node);
-
-    // // std.debug.print("shortest: {any}\n", .{shortest_path.items});
-    // return shortest_path;
 }
-
-// fn travel(map: ArrayList([]const u8), distance_grid: ArrayList(ArrayList(u32)), current_node: PathNode, destination: @Vector(2, u32)) !ArrayList(PathNode) {
-//     // initialize a path to return if at the destination
-//     if (current_node.coordinates[0] == destination[0] and current_node.coordinates[1] == destination[1]) {
-//         var path = ArrayList(PathNode).init(allocator);
-//         try path.append(current_node);
-//         return path;
-//     }
-
-//     const possible_moves = try getPossibleMoves(map, distance_grid, current_node);
-//     var shortest_path = ArrayList(PathNode).init(allocator);
-
-//     for (possible_moves.items) |new_node| {
-//         const path = try travel(map, distance_grid, new_node, destination);
-//         if (path.items.len == 0) {
-//             continue;
-//         }
-
-//         if (shortest_path.items.len == 0 or path.items.len < shortest_path.items.len) {
-//             shortest_path = path;
-//         }
-//     }
-
-//     // shortest_path being empty is the condition of returning from a dead end; only append if it's returning from the destination
-//     if (shortest_path.items.len > 0) {
-//         try shortest_path.append(current_node);
-//     }
-
-//     // std.debug.print("shortest: {any}\n", .{shortest_path.items});
-//     return shortest_path;
-// }
 
 fn getPossibleMoves(map: ArrayList([]const u8), distance_grid: ArrayList(ArrayList(u32)), current_coords: @Vector(2, u32)) !ArrayList(@Vector(2, u32)) {
     var possible_moves = ArrayList(@Vector(2, u32)).init(allocator);
@@ -154,10 +105,7 @@ fn getPossibleMoves(map: ArrayList([]const u8), distance_grid: ArrayList(ArrayLi
         const next_height_fine = next_height <= current_height + 1;
         const next_unvisited = distance_grid.items[current_y].items[current_x + 1] == std.math.maxInt(u32);
 
-        // std.debug.print("{any}, {any}, {any}\n", .{ current_node.coordinates, next_height_fine, next_unvisited });
-
         if (next_height_fine and next_unvisited) {
-            // std.debug.print("{d}, {d}\n", .{ distance_grid.items[current_y].items[current_x + 1], distance_grid.items[current_y].items[current_x] });
             distance_grid.items[current_y].items[current_x + 1] = distance_grid.items[current_y].items[current_x] + 1;
             try possible_moves.append(@Vector(2, u32){ current_x + 1, current_y });
         }
@@ -194,28 +142,14 @@ fn makeDistanceGrid(width: u32, height: u32, starting_point: @Vector(2, u32)) !A
     return grid;
 }
 
-fn printPath(map: ArrayList([]const u8), path: ArrayList(PathNode)) !void {
+fn printPath(map: ArrayList([]const u8)) !void {
     const stdout_file = std.io.getStdOut().writer();
     var bw = std.io.bufferedWriter(stdout_file);
     const stdout = bw.writer();
 
-    for (map.items, 0..) |row, i| {
-        for (row, 0..) |position, j| {
-            const current_coordinates = @Vector(2, u32){ @intCast(i), @intCast(j) };
-            const path_direction = pathAtCoordinates(path, current_coordinates);
-
-            var character = position;
-
-            if (path_direction != null) {
-                character = switch (path_direction orelse unreachable) {
-                    Direction.north => '^',
-                    Direction.south => 'v',
-                    Direction.east => '>',
-                    Direction.west => '<',
-                };
-            }
-
-            try stdout.print("{c}", .{character});
+    for (map.items) |row| {
+        for (row) |position| {
+            try stdout.print("{c}", .{position});
         }
         try stdout.print("\n", .{});
         try bw.flush();
@@ -244,13 +178,4 @@ fn printDistanceGrid(distance_grid: ArrayList(ArrayList(u32))) !void {
         try stdout.print("\n", .{});
         try bw.flush();
     }
-}
-
-fn pathAtCoordinates(path: ArrayList(PathNode), coordinates: @Vector(2, u32)) ?Direction {
-    for (path.items) |node| {
-        if (node.coordinates[0] == coordinates[0] and node.coordinates[1] == coordinates[1]) {
-            return node.direction;
-        }
-    }
-    return null;
 }
