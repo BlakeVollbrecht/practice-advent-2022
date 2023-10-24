@@ -17,6 +17,7 @@ pub fn solve() !void {
 
     var buf: [1024]u8 = undefined;
     var prev_line: []u8 = try allocator.alloc(u8, 0);
+    defer allocator.free(prev_line);
     var index: u32 = 1;
     var sum_indices: u32 = 0;
 
@@ -99,7 +100,6 @@ fn checkOrder(left: []const u8, right: []const u8) !OrderStatus {
 
     if (in_order == OrderStatus.unknown and left_items.len < right_items.len) {
         in_order = OrderStatus.in_order;
-        return in_order;
     }
 
     return in_order;
@@ -109,7 +109,7 @@ fn parseArray(string: []const u8) ![][]const u8 {
     const s = string[1 .. string.len - 1]; // remove leading and trailing "[" "]"
 
     var substrings = ArrayList([]const u8).init(allocator);
-    // defer substrings.deinit();
+    defer substrings.deinit();
 
     var bracketCount: u32 = 0;
     var start: u32 = 0;
@@ -133,5 +133,6 @@ fn parseArray(string: []const u8) ![][]const u8 {
         }
     }
 
-    return substrings.items;
+    var x = substrings.toOwnedSlice();
+    return x;
 }
