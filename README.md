@@ -1,8 +1,10 @@
 # Advent of Code 2022
 
-- practice some zig and bash
+- trying out Zig
 
 ## Notes
 
-- set the "solution" import path at top of main.zig and ```zig build run```
-- inputs converted from windows to unix line endings: ```tr -d '\015' <DOS-file >UNIX-file```
+- To run, open main.zig, set the "solution" import path, and ```zig build run```
+
+- Doesn't deal with windows line endings:
+  - Convert any CRLF txt files to unix line endings: ```tr -d '\015' <DOS-file >UNIX-file```
