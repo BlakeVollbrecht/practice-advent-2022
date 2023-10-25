@@ -8,6 +8,6 @@
 - Zig solutions don't deal with windows line endings:
   - Convert any CRLF txt files to unix line endings: ```tr -d '\015' <DOS-file >UNIX-file```
 
-- To run Zig a solution, open main.zig, set the "solution" import path, and ```zig build run```
+- To run a Zig solution, open main.zig, set the "solution" import path, and ```zig build run```
 
-- To run Go a solution: ```go run src/solutions/14-1/14-1.go```
+- To run a Go solution: ```go run src/solutions/14-1/14-1.go```
