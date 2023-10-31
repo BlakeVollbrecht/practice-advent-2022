@@ -127,13 +127,12 @@ func findBeaconsInRow(row_index int, sensors []Sensor) int {
 }
 
 func containsInt(list []int, element int) bool {
-	contains := false
 	for _, item := range list {
 		if item == element {
-			contains = true
+			return true
 		}
 	}
-	return contains
+	return false
 }
 
 func getManhattanDistance(a_x int, a_y int, b_x int, b_y int) int {
