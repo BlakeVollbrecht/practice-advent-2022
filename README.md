@@ -66,7 +66,7 @@
 |  Day 16 Part 1 |    549 ±7 ms   |
 |         Part 2 |   437 ±25 ms   | * manually adjusted complexity
 |                |                |
-|  Day 17 Part 1 |                |
+|  Day 17 Part 1 |     29 ±1 ms   |
 |         Part 2 |                |
 |                |                |
 |  Day 18 Part 1 |                |
