@@ -16,61 +16,61 @@
 
 - Intel i5 12600K, 32GB RAM
 
-|    Exercise    |  Running Time  |
-| -------------- | -------------- |
-|   Day 1 Part 1 |         1 ms   |
-|         Part 2 |     64 ±1 ms   |
-|                |                |
-|   Day 2 Part 1 |       < 1 ms   |
-|         Part 2 |       < 1 ms   |
-|                |                |
-|   Day 3 Part 1 |         1 ms   |
-|         Part 2 |         1 ms   |
-|                |                |
-|   Day 4 Part 1 |         1 ms   |
-|         Part 2 |         1 ms   |
-|                |                |
-|   Day 5 Part 1 |         1 ms   |
-|         Part 2 |         2 ms   |
-|                |                |
-|   Day 6 Part 1 |       < 1 ms   |
-|         Part 2 |       < 1 ms   |
-|                |                |
-|   Day 7 Part 1 |         4 ms   |
-|         Part 2 |         4 ms   |
-|                |                |
-|   Day 8 Part 1 |     41 ±2 ms   |
-|         Part 2 |    102 ±3 ms   |
-|                |                |
-|   Day 9 Part 1 |    127 ±2 ms   |
-|         Part 2 |     73 ±4 ms   |
-|                |                |
-|  Day 10 Part 1 |       < 1 ms   |
-|         Part 2 |         4 ms   |
-|                |                |
-|  Day 11 Part 1 |       < 1 ms   |
-|         Part 2 |        15 ms   |
-|                |                |
-|  Day 12 Part 1 |     10 ±1 ms   | * not drawing maps (adds 5ms)
-|         Part 2 |      7 ±1 ms   | * not drawing maps (adds 4ms)
-|                |                |
-|  Day 13 Part 1 |         4 ms   |
-|         Part 2 |     44 ±3 ms   |
-|                |                |
-|  Day 14 Part 1 |       < 1 ms   | * not drawing grid
-|         Part 2 |         3 ms   | * not drawing grid
-|                |                |
-|  Day 15 Part 1 |       < 1 ms   |
-|         Part 2 |   933 ±11 ms   |
-|                |                |
-|  Day 16 Part 1 |    549 ±7 ms   |
-|         Part 2 |   437 ±25 ms   | * manually adjusted complexity
-|                |                |
-|  Day 17 Part 1 |     29 ±1 ms   |
-|         Part 2 |                |
-|                |                |
-|  Day 18 Part 1 |                |
-|         Part 2 |                |
-|                |                |
-|  Day 19 Part 1 |                |
-|         Part 2 |                |
+|    Exercise    |  Running Time  |                           Notes                          |
+| -------------- | -------------- |                                                          |
+|   Day 1 Part 1 |         1 ms   |                                                          |
+|   Day 1 Part 2 |     64 ±1 ms   |                                                          |
+|                |                |                                                          |
+|   Day 2 Part 1 |       < 1 ms   |                                                          |
+|   Day 2 Part 2 |       < 1 ms   |                                                          |
+|                |                |                                                          |
+|   Day 3 Part 1 |         1 ms   |                                                          |
+|   Day 3 Part 2 |         1 ms   |                                                          |
+|                |                |                                                          |
+|   Day 4 Part 1 |         1 ms   |                                                          |
+|   Day 4 Part 2 |         1 ms   |                                                          |
+|                |                |                                                          |
+|   Day 5 Part 1 |         1 ms   |                                                          |
+|   Day 5 Part 2 |         2 ms   |                                                          |
+|                |                |                                                          |
+|   Day 6 Part 1 |       < 1 ms   |                                                          |
+|   Day 6 Part 2 |       < 1 ms   |                                                          |
+|                |                |                                                          |
+|   Day 7 Part 1 |         4 ms   |                                                          |
+|   Day 7 Part 2 |         4 ms   |                                                          |
+|                |                |                                                          |
+|   Day 8 Part 1 |     41 ±2 ms   |                                                          |
+|   Day 8 Part 2 |    102 ±3 ms   |                                                          |
+|                |                |                                                          |
+|   Day 9 Part 1 |    127 ±2 ms   |                                                          |
+|   Day 9 Part 2 |     73 ±4 ms   |                                                          |
+|                |                |                                                          |
+|  Day 10 Part 1 |       < 1 ms   |                                                          |
+|  Day 10 Part 2 |         4 ms   |                                                          |
+|                |                |                                                          |
+|  Day 11 Part 1 |       < 1 ms   |                                                          |
+|  Day 11 Part 2 |        15 ms   |                                                          |
+|                |                |                                                          |
+|  Day 12 Part 1 |     10 ±1 ms   | * not drawing maps (adds 5ms)                            |
+|  Day 12 Part 2 |      7 ±1 ms   | * not drawing maps (adds 4ms)                            |
+|                |                |                                                          |
+|  Day 13 Part 1 |         4 ms   |                                                          |
+|  Day 13 Part 2 |     44 ±3 ms   |                                                          |
+|                |                |                                                          |
+|  Day 14 Part 1 |       < 1 ms   | * not drawing grid                                       |
+|  Day 14 Part 2 |         3 ms   | * not drawing grid                                       |
+|                |                |                                                          |
+|  Day 15 Part 1 |       < 1 ms   |                                                          |
+|  Day 15 Part 2 |   933 ±11 ms   |                                                          |
+|                |                |                                                          |
+|  Day 16 Part 1 |    549 ±7 ms   |                                                          |
+|  Day 16 Part 2 |   437 ±25 ms   | * manually adjusted complexity                           |
+|                |                |                                                          |
+|  Day 17 Part 1 |     29 ±1 ms   | * < 1ms if just using improved code from part 2          |
+|  Day 17 Part 2 |      2 ±1 ms   | * to see pattern. full run has correct answer in 55h9m31s|
+|                |                |                                                          |
+|  Day 18 Part 1 |                |                                                          |
+|  Day 18 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 19 Part 1 |                |                                                          |
+|  Day 19 Part 2 |                |                                                          |
