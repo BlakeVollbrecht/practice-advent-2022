@@ -69,7 +69,7 @@
 |  Day 17 Part 1 |     29 ±1 ms   | * < 1ms if just using improved code from part 2          |
 |  Day 17 Part 2 |      2 ±1 ms   | * to see pattern. full run has correct answer in 55h9m31s|
 |                |                |                                                          |
-|  Day 18 Part 1 |                |                                                          |
+|  Day 18 Part 1 |     35 ±1 ms   |                                                          |
 |  Day 18 Part 2 |                |                                                          |
 |                |                |                                                          |
 |  Day 19 Part 1 |                |                                                          |
