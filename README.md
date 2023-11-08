@@ -72,5 +72,23 @@
 |  Day 18 Part 1 |     35 ±1 ms   | * 25ms if using face-counting code from part 2           |
 |  Day 18 Part 2 |     61 ±2 ms   |                                                          |
 |                |                |                                                          |
-|  Day 19 Part 1 |                |                                                          |
+|  Day 19 Part 1 |   975 ±38 ms   |                                                          |
 |  Day 19 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 20 Part 1 |                |                                                          |
+|  Day 20 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 21 Part 1 |                |                                                          |
+|  Day 21 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 22 Part 1 |                |                                                          |
+|  Day 22 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 23 Part 1 |                |                                                          |
+|  Day 23 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 24 Part 1 |                |                                                          |
+|  Day 24 Part 2 |                |                                                          |
+|                |                |                                                          |
+|  Day 25 Part 1 |                |                                                          |
+|  Day 25 Part 2 |                |                                                          |
