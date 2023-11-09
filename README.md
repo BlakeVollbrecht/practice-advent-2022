@@ -61,10 +61,10 @@
 |  Day 14 Part 2 |         3 ms   | * not drawing grid                                       |
 |                |                |                                                          |
 |  Day 15 Part 1 |       < 1 ms   |                                                          |
-|  Day 15 Part 2 |   933 ±11 ms   | * part 1 approach + unoptimized brute force              |
+|  Day 15 Part 2 |   933 ±11 ms   | * no optimization done                                   |
 |                |                |                                                          |
 |  Day 16 Part 1 |    549 ±7 ms   |                                                          |
-|  Day 16 Part 2 |   437 ±25 ms   | * manually-adjusted threshold (CUTOFF)                   |
+|  Day 16 Part 2 |   437 ±25 ms   | * manually-adjusted threshold                            |
 |                |                |                                                          |
 |  Day 17 Part 1 |     29 ±1 ms   | * < 1ms if just using improved code from part 2          |
 |  Day 17 Part 2 |      2 ±1 ms   | * to see pattern. full run has correct answer in 55h9m31s|
@@ -75,8 +75,8 @@
 |  Day 19 Part 1 |   975 ±38 ms   | * 119 ±3 ms if using optimized code from part 2          |
 |  Day 19 Part 2 |  5100 ±90 ms   | * these have manually-adjusted EXCESS_RESOURCE_THRESHOLD |
 |                |                |                                                          |
-|  Day 20 Part 1 |                |                                                          |
-|  Day 20 Part 2 |                |                                                          |
+|  Day 20 Part 1 |     37 ±2 ms   |                                                          |
+|  Day 20 Part 2 |    430 ±7 ms   | * no optimization done                                   |
 |                |                |                                                          |
 |  Day 21 Part 1 |                |                                                          |
 |  Day 21 Part 2 |                |                                                          |
