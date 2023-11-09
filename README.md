@@ -75,7 +75,7 @@
 |  Day 19 Part 1 |   975 ±38 ms   | * 119 ±3 ms if using optimized code from part 2          |
 |  Day 19 Part 2 |  5100 ±90 ms   | * these have manually-adjusted EXCESS_RESOURCE_THRESHOLD |
 |                |                |                                                          |
-|  Day 20 Part 1 |                |                                                          |
+|  Day 20 Part 1 |     37 ±2 ms   |                                                          |
 |  Day 20 Part 2 |                |                                                          |
 |                |                |                                                          |
 |  Day 21 Part 1 |                |                                                          |
