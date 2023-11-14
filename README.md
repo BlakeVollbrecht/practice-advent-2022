@@ -78,8 +78,8 @@
 |  Day 20 Part 1 |     37 ±2 ms   |                                                          |
 |  Day 20 Part 2 |    430 ±7 ms   | * no optimization done                                   |
 |                |                |                                                          |
-|  Day 21 Part 1 |                |                                                          |
-|  Day 21 Part 2 |                |                                                          |
+|  Day 21 Part 1 |       < 1 ms   |                                                          |
+|  Day 21 Part 2 |       < 1 ms   |                                                          |
 |                |                |                                                          |
 |  Day 22 Part 1 |                |                                                          |
 |  Day 22 Part 2 |                |                                                          |
