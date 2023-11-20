@@ -84,8 +84,8 @@
 |  Day 22 Part 1 |       < 1 ms   | * 13 ±2 ms if outputting trace of path                   |
 |  Day 22 Part 2 |       < 1 ms   | * 14 ±2 ms if outputting trace of path                   |
 |                |                |                                                          |
-|  Day 23 Part 1 |                |                                                          |
-|  Day 23 Part 2 |                |                                                          |
+|  Day 23 Part 1 |      3 ±1 ms   |                                                          |
+|  Day 23 Part 2 |    215 ±6 ms   |                                                          |
 |                |                |                                                          |
 |  Day 24 Part 1 |                |                                                          |
 |  Day 24 Part 2 |                |                                                          |
