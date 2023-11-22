@@ -87,7 +87,7 @@
 |  Day 23 Part 1 |      3 ±1 ms   |                                                          |
 |  Day 23 Part 2 |    215 ±6 ms   |                                                          |
 |                |                |                                                          |
-|  Day 24 Part 1 |                |                                                          |
+|  Day 24 Part 1 |     62 ±4 ms   | * manually adjusted TIME_LIMIT                           |
 |  Day 24 Part 2 |                |                                                          |
 |                |                |                                                          |
 |  Day 25 Part 1 |                |                                                          |
